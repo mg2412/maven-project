@@ -36,12 +36,14 @@ stage ('install Stage') {
                 }
             }
         }
-        stage('deployemnet'){
-            steps{
-            sshagent (credentials: ['8d3a7cbf-062b-4fb2-811e-5f8be9635fb5']) {
+        stage ('deploy Stage') {
+
+            steps {
+                sshagent (credentials: ['8d3a7cbf-062b-4fb2-811e-5f8be9635fb5']) {
                 sh 'scp -o StrictHostKeyChecking=no -l */target/*.war ec2-user@172.31.22.217:/var/lib/tomcat/webapps'
               }
             }
         }
+        
     }
 }
