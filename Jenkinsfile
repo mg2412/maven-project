@@ -9,32 +9,33 @@ pipeline {
                 }
             }
         
-        
-        stage ('Compile Stage') {
-
-            steps {
-                withMaven(maven : 'maven_3_5_0') {
-                    sh 'mvn clean compile'
-                }
-            }
-        }
 
         stage ('Testing Stage') {
 
             steps {
-                withMaven(maven : 'maven_3_5_0') {
+                withMaven(maven : 'localMaven') {
                     sh 'mvn test'
                 }
             }
         }
 
+stage ('package Stage') {
 
-        stage ('Deployment Stage') {
             steps {
-                withMaven(maven : 'maven_3_5_0') {
-                    sh 'mvn deploy'
+                withMaven(maven : 'localMaven') {
+                    sh 'mvn package'
                 }
             }
         }
+        
+stage ('install Stage') {
+
+            steps {
+                withMaven(maven : 'localMaven') {
+                    sh 'mvn install'
+                }
+            }
+        }
+
     }
 }
