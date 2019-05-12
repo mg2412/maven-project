@@ -8,7 +8,7 @@ git 'https://github.com/mg2412/maven-project.git'
 }
 stage('packaging with sonar'){
 steps{
-withMaven(maven:'localMaven'){
+withSonarQubeEnv('sonarQube'){
 sh 'mvn sonar:sonar clean package'
 }
 }
