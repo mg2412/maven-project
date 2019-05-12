@@ -1,5 +1,4 @@
 node{
-agent 'maven,docker'
 stages('scm checkout'){
 steps{
 git 'https://github.com/mg2412/maven-project.git'
