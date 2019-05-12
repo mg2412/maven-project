@@ -1,0 +1,15 @@
+pipeline{
+agent any
+stages{
+stage('scm checkout'){
+git 'https://github.com/mg2412/maven-project.git'
+}
+stage('packaging with sonar'){
+steps{
+withMaven(maven:'localMaven'){
+sh 'mvn sonar:sonar clean package'
+}
+}
+}
+}
+}
