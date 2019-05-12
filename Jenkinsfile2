@@ -6,5 +6,10 @@ steps{
 git 'https://github.com/mg2412/maven-project.git'
 }
 }
+stage('installing'){
+steps{
+sh 'mvn clean install'
+}
+}
 }
 }
