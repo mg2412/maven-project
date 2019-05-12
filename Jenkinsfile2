@@ -1,22 +1,22 @@
 pipeline{
 agent any
-stages{
-stage('scm checkout'){
-steps{
-git 'https://github.com/mg2412/maven-project.git'
-}
-}
-stage('installing'){
-steps{
-sh 'mvn clean install'
-}
-}
-stage('deploy on tomcat'){
-steps{
-sshagent(['8d3a7cbf-062b-4fb2-811e-5f8be9635fb5']) {
-    sh 'scp */target/*.war ec2-user@172.31.22.217:/var/lib/tomcat/webapps'
-}
-}
-}
-}
-}
+    stages{
+    stage('scm checkout'){
+                                steps{
+                                git 'https://github.com/mg2412/maven-project.git'
+                                }
+                                }
+                                stage('installing'){
+                                steps{
+                                sh 'mvn clean install'
+                                }
+                                }
+                                stage('deploy on tomcat'){
+                                steps{
+                                sshagent(['8d3a7cbf-062b-4fb2-811e-5f8be9635fb5']) {
+                                sh 'scp */target/*.war ec2-user@172.31.22.217:/var/lib/tomcat/webapps'
+                                }
+                                }
+                                }
+                                }
+                                }
