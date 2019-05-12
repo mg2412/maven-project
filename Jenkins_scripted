@@ -1,7 +1,6 @@
 node{
 stage('scm checkout'){
-step{
 git 'https://github.com/mg2412/maven-project.git'
-}
+
 }
 }
