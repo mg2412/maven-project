@@ -28,14 +28,14 @@ stage ('package Stage') {
             }
         }
         
-stage ('install Stage') {
+/*stage ('install Stage') {
 
             steps {
                 withMaven(maven : 'localMaven') {
                     sh 'mvn install'
                 }
             }
-        }
+        }*/
  //       stage ('deploy Stage') {
 
    //         steps {
@@ -44,6 +44,15 @@ stage ('install Stage') {
          //     }
            // }
     //    }
-        
+        stage('report with sonarqube '){
+            steps{
+                withMaven(maven: 'localMaven'){
+                    withSonar(sonar: 'sonarQube'){
+                    sh 'mvn sonar:sonar clean install'
+                    }
+                }
+                }
+            }
+        }
     }
 }
