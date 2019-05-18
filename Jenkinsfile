@@ -43,7 +43,7 @@ stage ('install Stage') {
        //         sh 'scp -o StrictHostKeyChecking=no */target/*.war ec2-user@172.31.22.217:/var/lib/tomcat/webapps'
          //     }
            // }
-        }
+    //    }
         
     }
 }
