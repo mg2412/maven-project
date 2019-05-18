@@ -46,11 +46,11 @@ stage ('package Stage') {
     //    }
         stage('report with sonarqube '){
             steps{
-                withMaven(maven: 'localMaven'){
-                    withSonar(sonar: 'sonarQube'){
+               // withMaven(maven: 'localMaven'){
+                    withSonarQubeEnv(sonar: 'sonarQube'){
                     sh 'mvn sonar:sonar clean install'
                     }
-                }
+                //}
                 }
             }
         }
